@@ -1,0 +1,9 @@
+import pymel.core as pm
+
+for index in range(14):
+    print('value of each is : {}'.format(index))
+    for y_index in range(10):
+        transform_node, creation = pm.polyCube(name='C_polycube{}_MSH'.format(index))
+        transform_node.translateX.set(index*1.5)
+        transform_node.translateY.set(y_index*1.5)
+        transform_node.translateZ.set(y_index*1.5) 
