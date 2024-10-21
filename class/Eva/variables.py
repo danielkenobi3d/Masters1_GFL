@@ -1,4 +1,3 @@
-from zipfile import error
 
 my_name ='Eva'
 string_number ='22'
