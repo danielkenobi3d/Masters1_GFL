@@ -23,3 +23,12 @@ for index in range(14):
         transform_node, creation = pm.polyCube(name='C_polycube{}_MSH'.format(index))
         transform_node.translateX.set(index*1.5)
         transform_node.translateY.set(y_index*1.5)
+
+import maya.cmds as cmds
+
+for index in range(14):
+    print('value of each is : {}'.format(index))
+    for y_index in range(10):
+        transform_node, creation = cmds.polyCube(name='C_polycube{}_MSH'.format(index))
+        cmds.setAttr('{}.translateX'.format(transform_node), index*1.5)
+        cmds.setAttr('{}.translateY'.format(transform_node), y_index*1.5)
