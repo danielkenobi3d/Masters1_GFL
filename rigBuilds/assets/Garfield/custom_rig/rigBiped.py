@@ -18,7 +18,9 @@ from RMPY.rig.biped.rig import neckHeadSpaceSwitch
 from RMPY.rig.biped.rig import rigEyesSpaceSwitch
 from RMPY.rig import rigSingleJoint
 from RMPY.rig import rigOutput
-
+from Masters1_GFL.rigBuilds.assets.Garfield.custom_rig import tail
+import importlib
+importlib.reload(tail)
 
 class RigBypedModel(rigBase.BaseModel):
     def __init__(self, **kwargs):
@@ -50,7 +52,7 @@ class RigBypedModel(rigBase.BaseModel):
         self.r_breast = rigBreast.Breast()
         self.gums = rigSingleJoint.RigSingleJoint()
         self.rig_output = rigOutput.RigOutput()
-
+        self.tail = tail.RigTail()
 
 class RigByped(rigBase.RigBase):
     def __init__(self, *args, **kwargs):
@@ -81,6 +83,8 @@ class RigByped(rigBase.RigBase):
         self.breast_root = [u'{}_breast00_reference_pnt']
         self.toes_root = [u'{}_toes00_reference_grp']
         self.gums_root = [u'C_gums00_reference_pnt']
+        self.tail_root = ['C_tail00_reference_pnt', 'C_tail01_reference_pnt', 'C_tail02_reference_pnt',
+                          'C_tail03_reference_pnt', 'C_tail04_reference_pnt']
 
     @property
     def neck_head(self):
@@ -232,7 +236,8 @@ class RigByped(rigBase.RigBase):
         self.l_leg.set_parent(self.hip, create_hierarchy_joints=True, output_joint_rig=self.rig_output)
         self.r_leg.set_parent(self.hip, create_hierarchy_joints=True, output_joint_rig=self.rig_output)
 
-
+        self.tail.create_point_base(*self.tail_root)
+        self.tail.set_parent(self.hip, create_hierarchy_joints=True, output_joint_rig=self.rig_output)
 
 if __name__ == '__main__':
     rig_biped = RigByped()
