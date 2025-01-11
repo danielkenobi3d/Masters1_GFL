@@ -118,9 +118,7 @@ definition = dict(
         attributes=dict(
                         corrugator={'type': 'float', 'min': 0, 'max': 10},
         ),
-        order=['corrugator' ]
-
-
+        order=['corrugator' ],
     )
 )
 eyes_dict = dict(
