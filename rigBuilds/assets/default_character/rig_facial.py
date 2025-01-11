@@ -19,8 +19,9 @@ def create_facial_rig():
     env = environment.Environment()
     facial_definition = env.get_variables_from_path(environment.pipe_config.default_facial_definition)
 
+    # This line of code will create the B controls on top of the character based on the facial reference points
     facial_controls = rigBlendShapeControls.RigBlendShapeControls(root='C_facialControls_reference_pnt')
-
+    # this is the line that builds the rig or connects the blendshapes based on the facial definition
     rigFacial.RigFacial(facial_definition.definition,
                         prefix_geometry_list=facial_definition.prefix_geometry_list)
 
