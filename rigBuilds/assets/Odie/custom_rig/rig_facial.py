@@ -11,16 +11,14 @@ from builder.pipeline import environment
 
 
 def build():
-    pm.rename('C_Body', 'character')
     create_facial_rig()
-    # create_jaw_layers()
-    pm.rename('character', 'C_Body')
+    create_jaw_layers()
 
 
 def create_facial_rig():
     env = environment.Environment()
     facial_definition = env.get_variables_from_path(environment.pipe_config.facial_definition)
-
+    pm.rename('C_Body', 'character')
     facial_controls = rigBlendShapeControls.RigBlendShapeControls(root='C_facialControls_reference_pnt')
 
     rigFacial.RigFacial(facial_definition.definition,
@@ -32,7 +30,7 @@ def create_facial_rig():
     # pm.setAttr('character.visibility', False)
     for each in facial_definition.direct_blendshape:
         static_connection(each, facial_definition.direct_blendshape[each])
-
+    pm.rename('character', 'C_Body')
 
 def static_connection(source, destination):
     destination_bs = blendShape.BlendShape.by_node(destination)

@@ -12,5 +12,6 @@ def build_biped_rig():
         pm.parent(geo_root, 'rig')
     pm.parent('environment', 'rig')
 
+
 def custom_rig():
     pass

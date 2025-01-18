@@ -17,7 +17,7 @@ def build():
 
 def create_facial_rig():
     env = environment.Environment()
-    facial_definition = env.get_variables_from_path(environment.pipe_config.default_facial_definition)
+    facial_definition = env.get_variables_from_path(environment.pipe_config.facial_definition)
 
     # This line of code will create the B controls on top of the character based on the facial reference points
     facial_controls = rigBlendShapeControls.RigBlendShapeControls(root='C_facialControls_reference_pnt')
@@ -43,7 +43,7 @@ def static_connection(source, destination):
 
 def create_jaw_layers():
     env = environment.Environment()
-    facial_definition = env.get_variables_from_path(environment.pipe_config.default_facial_definition)
+    facial_definition = env.get_variables_from_path(environment.pipe_config.facial_definition)
 
     geometries = facial_definition.jaw_layer
     static_layer = rigStaticLayer.StaticLayer(*geometries, name='mouthOpen')
