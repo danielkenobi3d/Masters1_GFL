@@ -36,12 +36,12 @@ def custom_rig():
 
 def load_skinning_data():
     env = environment.Environment()
-    root_node = pm.ls('geo', '*_GEO_GRP')[0]
-    print(root_node)
-    list_of_objects = search_hierarchy.shape_type_in_hierarchy(root_node)
-    for each in list_of_objects:
-        if Path(f'{env.data}/skinClusters/{each}.json').exists():
-            data_save_load.load_skin_cluster(each)
+    root_node = pm.ls('geo', '*_GEO_GRP', 'GEO')
+    if root_node:
+        list_of_objects = search_hierarchy.shape_type_in_hierarchy(root_node[0])
+        for each in list_of_objects:
+            if Path(f'{env.data}/skinClusters/{each}.json').exists():
+                data_save_load.load_skin_cluster(each)
 
 
 def load_shapes_data():

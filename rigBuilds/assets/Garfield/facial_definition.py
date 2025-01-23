@@ -62,10 +62,6 @@ definition = dict(
                          LOutBrowDwn={'connection': 'browOut', 'value': -10},
                          LInBrowUp={'connection': 'browIn', 'value': 10},
                          LInBrowDwn={'connection': 'browIn', 'value': -10},
-                         LMOutBrowUp={'connection': 'browOut', 'value': 10},
-                         LMOutBrowDwn={'connection': 'browOut', 'value': -10},
-                         LMInBrowUp={'connection': 'browIn', 'value': 10},
-                         LMInBrowDwn={'connection': 'browIn', 'value': -10},
                          LeyesCls={'connection': 'eyeCls', 'value': 10},
                          LeyesCls50={'connection': 'eyeCls', 'value': 5},
                          LeyesOpen={'connection': 'eyeCls', 'value': -10},
@@ -122,9 +118,7 @@ definition = dict(
         attributes=dict(
                         corrugator={'type': 'float', 'min': 0, 'max': 10},
         ),
-        order=['corrugator' ]
-
-
+        order=['corrugator' ],
     )
 )
 eyes_dict = dict(
@@ -156,8 +150,8 @@ correctives_dict = dict(
 )
 
 direct_blendshape = {
-    'character': 'C_BODY_001_HIGH'
 }
+# 'character': 'C_BODY_001_HIGH'
 
 jaw_layer = [u'character']
 

@@ -18,20 +18,19 @@ def build():
 def create_facial_rig():
     env = environment.Environment()
     facial_definition = env.get_variables_from_path(environment.pipe_config.facial_definition)
-
-    # This line of code will create the B controls on top of the character based on the facial reference points
+    pm.rename('C_Body', 'character')
     facial_controls = rigBlendShapeControls.RigBlendShapeControls(root='C_facialControls_reference_pnt')
-    # this is the line that builds the rig or connects the blendshapes based on the facial definition
+
     rigFacial.RigFacial(facial_definition.definition,
                         prefix_geometry_list=facial_definition.prefix_geometry_list)
 
-    pm.parentConstraint('neck_C0_head_jnt', facial_controls.rig_system.controls, mo=True)
-    pm.scaleConstraint('neck_C0_head_jnt', facial_controls.rig_system.controls, mo=True)
+    pm.parentConstraint('C_main00_head_sknjnt', facial_controls.rig_system.controls, mo=True)
+    pm.scaleConstraint('C_main00_head_sknjnt', facial_controls.rig_system.controls, mo=True)
 
-    pm.setAttr('character.visibility', False)
+    # pm.setAttr('character.visibility', False)
     for each in facial_definition.direct_blendshape:
         static_connection(each, facial_definition.direct_blendshape[each])
-
+    pm.rename('character', 'C_Body')
 
 def static_connection(source, destination):
     destination_bs = blendShape.BlendShape.by_node(destination)
