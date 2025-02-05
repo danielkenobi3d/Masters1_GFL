@@ -29,7 +29,7 @@ class RigTail(rigBase.RigBase):
         pm.skinCluster(self.rig_tail_fk.joints, self.rig_tail_ik.geometry_output)
         # create_path_surface=True, controls_number=6,
 
-        self.rig_tail_fk.set_parent('C_main01_Hip_sknjnt')
+        self.rig_tail_fk.set_parent(pm.ls('C_main01_Hip_sknjnt')[0])
         self.joints.extend(self.rig_tail_ik.lace_rig.joints)
         self.root = self.rig_tail_fk.root
 
