@@ -11,10 +11,10 @@ from builder.pipeline import environment
 
 
 def build():
-    pm.rename('JOHN_HEAD', 'character')
+    pm.rename('C_Body', 'character')
     create_facial_rig()
     # create_jaw_layers()
-    #pm.rename('character', 'C_Body')
+    pm.rename('character', 'C_Body')
 
 
 def create_facial_rig():
