@@ -17,6 +17,7 @@ build = {
         ('load shapes', ['rig_build.load_shapes_data'])
     ],
     'finalize': [
+        ('eyesWrap', ['finalize.custom_finalize']),
         ('build visibility switches', ['visibility_switches.build']),
         ('cleanup', ['rig_build.cleanup']),
         ('custom finalize', ['rig_build.custom_finalize'])
