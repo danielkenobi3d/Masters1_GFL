@@ -14,7 +14,7 @@ def build():
     pm.rename('JOHN_HEAD', 'character')
     create_facial_rig()
     # create_jaw_layers()
-    #pm.rename('character', 'C_Body')
+    pm.rename('character', 'C_Body')
 
 
 def create_facial_rig():

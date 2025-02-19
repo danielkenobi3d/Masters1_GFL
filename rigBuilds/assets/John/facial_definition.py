@@ -113,12 +113,17 @@ definition = dict(
         baseMesh='character',
         control='C_facial00_foreHead_ctr',
         blendShapes=dict(
+                         eyeCls={'connection': 'eyesClose', 'value': 10},
+                         eyeCls50={'connection': 'eyesClose', 'value': 5},
+                         eyeClsWCorrective={'connection': 'eyeWCorrective', 'value': 10},
                          browCorrugator={'connection': 'corrugator', 'value': 10},
                          ),
         attributes=dict(
+                        eyesClose={'type': 'float', 'min': 0, 'max': 10},
                         corrugator={'type': 'float', 'min': 0, 'max': 10},
+                        eyeWCorrective={'type': 'float', 'min': 0, 'max': 10}
         ),
-        order=['corrugator' ],
+        order=['corrugator', 'eyesClose', 'eyeWCorrective'],
     )
 )
 eyes_dict = dict(
@@ -150,6 +155,7 @@ correctives_dict = dict(
 )
 
 direct_blendshape = {
+
 }
 # 'character': 'C_BODY_001_HIGH'
 

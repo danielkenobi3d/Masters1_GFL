@@ -20,6 +20,6 @@ build = {
         ('eyesWrap', ['finalize.custom_finalize']),
         ('build visibility switches', ['visibility_switches.build']),
         ('cleanup', ['rig_build.cleanup']),
-        ('custom finalize', ['rig_build.custom_finalize'])
+        ('custom finalize', ['finalize.custom_finalize'])
     ],
 }

@@ -1,8 +1,8 @@
-from Masters1_GFL.rigBuilds.assets.Odie.custom_rig import rigBiped
+from Masters1_GFL.rigBuilds.assets.Garfield.custom_rig import rigBiped
 import importlib
 importlib.reload(rigBiped)
 import pymel.core as pm
-
+from Masters1_GFL.rigBuilds.assets.Garfield.custom_rig import eyes_rig
 
 def build_biped_rig():
     rig_biped = rigBiped.RigByped()
@@ -13,4 +13,4 @@ def build_biped_rig():
     pm.parent('environment', 'rig')
 
 def custom_rig():
-    pass
+    eyes_rig.build()

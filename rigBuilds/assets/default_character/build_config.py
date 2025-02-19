@@ -15,6 +15,6 @@ build = {
     ],
     'finalize': [
         ('cleanup', ['rig_build.cleanup']),
-        ('custom finalize', ['rig_build.custom_finalize'])
+        ('custom finalize', ['finalize.custom_finalize'])
     ],
 }

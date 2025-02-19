@@ -53,6 +53,7 @@ class RigBypedModel(rigBase.BaseModel):
         self.gums = rigSingleJoint.RigSingleJoint()
         self.rig_output = rigOutput.RigOutput()
         self.tail = tail.RigTail()
+        #self.minihair = rigFK.RigFK()
 
 class RigByped(rigBase.RigBase):
     def __init__(self, *args, **kwargs):
@@ -85,6 +86,8 @@ class RigByped(rigBase.RigBase):
         self.gums_root = [u'C_gums00_reference_pnt']
         self.tail_root = ['C_tail00_reference_pnt', 'C_tail01_reference_pnt', 'C_tail02_reference_pnt',
                           'C_tail03_reference_pnt', 'C_tail04_reference_pnt']
+
+        #self.minihair_root = ['']
 
     @property
     def neck_head(self):
@@ -238,6 +241,17 @@ class RigByped(rigBase.RigBase):
 
         self.tail.create_point_base(*self.tail_root)
         self.tail.set_parent(self.hip, create_hierarchy_joints=True, output_joint_rig=self.rig_output)
+
+        # This is very experimental, we will have to test that later
+        #r_root_points_minihair = [each.format('R') for each in self.minihair_root]
+        #self.minihair.create_point_base(*r_root_points_minihair)
+        #self.minihair.set_parent(self.neck_head, create_hierarchy_joints=True, output_joint_rig=self.rig_output)
+
+        #l_root_points_minihair = [each.format('L') for each in self.minihair_root]
+        #self.minihair.create_point_base(*l_root_points_minihair)
+        #self.minihair.set_parent(self.neck_head, create_hierarchy_joints=True, output_joint_rig=self.rig_output)
+
+
 
 if __name__ == '__main__':
     rig_biped = RigByped()

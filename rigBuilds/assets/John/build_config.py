@@ -14,10 +14,13 @@ build = {
         ],
     'load data': [
         ('load skinning', ['rig_build.load_skinning_data']),
-        ('load shapes', ['rig_build.load_shapes_data'])
+        ('load shapes', ['rig_build.load_shapes_data']),
+        ('custom deformers',['deformers.custom_deformers'])
     ],
     'finalize': [
+        ('eyesWrap', ['finalize.create_eyes_wrap']),
+        ('build visibility switches', ['visibility_switches.build']),
         ('cleanup', ['rig_build.cleanup']),
-        ('custom finalize', ['rig_build.custom_finalize'])
+        ('custom finalize', ['finalize.custom_finalize'])
     ],
 }

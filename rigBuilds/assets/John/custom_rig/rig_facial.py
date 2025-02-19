@@ -7,12 +7,18 @@ from RMPY.rig.switches import rigFloatSwitch
 from RMPY.core import rig_core
 from RMPY.creators import blendShape
 from builder.pipeline import environment
-
+import maya.cmds as cmds
 
 
 def build():
     create_facial_rig()
     create_jaw_layers()
+    attach_brows()
+
+def attach_brows():
+    brow_geo = ['L_eyebrow', 'R_eyebrow']
+    proximity_wrap = pm.deformer(*brow_geo, type='proximityWrap')[0]
+    cmds.proximityWrap(str(proximity_wrap), edit=True, addDrivers='character')
 
 
 def create_facial_rig():
@@ -30,6 +36,7 @@ def create_facial_rig():
     # pm.setAttr('character.visibility', False)
     for each in facial_definition.direct_blendshape:
         static_connection(each, facial_definition.direct_blendshape[each])
+
     pm.rename('character', 'C_Body')
 
 def static_connection(source, destination):

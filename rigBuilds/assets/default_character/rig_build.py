@@ -69,8 +69,7 @@ def cleanup():
         each.visibility.set(False)
 
 
-def custom_finalize():
-    pass
+
 
 
 if __name__ == '__main__':

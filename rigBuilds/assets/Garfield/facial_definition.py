@@ -1,4 +1,4 @@
-prefix_geometry_list = []
+prefix_geometry_list = ['moustache']
 
 definition = dict(
     jaw=dict(
@@ -73,6 +73,7 @@ definition = dict(
                         ),
         order=['browOut', 'browIn', 'eyeCls']
         ),
+
     mouthCorner=dict(
         type='blend_shape_definition',
         isSymetrical=True,
@@ -95,6 +96,23 @@ definition = dict(
                         ),
         order=['cornerUpDown', 'cornerOutIn', 'uplipOutIn', 'lowLipOutIn']
         ),
+
+    mouthCorner_moustache=dict(
+            type='blend_shape_definition',
+            isSymetrical=True,
+            baseMesh='moustache',
+            control='L_facial00_mouthCorner_ctr',
+            blendShapes=dict(Lsmilemoustache = {'connection': 'cornerUpDown', 'value': 10},
+                            ),
+            attributes=dict(cornerUpDown={'type': 'float', 'min': -10, 'max': 10},
+                            cornerOutIn={'type': 'float', 'min': -10, 'max': 10},
+                            uplipOutIn={'type': 'float', 'min': -10, 'max': 10},
+                            lowLipOutIn={'type': 'float', 'min': -10, 'max': 10},
+
+                            ),
+            order=['cornerUpDown', 'cornerOutIn', 'uplipOutIn', 'lowLipOutIn']
+            ),
+
     cheeks=dict(
         type='blend_shape_definition',
         isSymetrical=True,
@@ -107,19 +125,37 @@ definition = dict(
                         noseCorrugator={'type': 'float', 'min': 0, 'max': 10},),
         order=['squint', 'noseCorrugator']
         ),
+
+    ear =dict(
+        type='blend_shape_definition',
+        isSymetrical=True,
+        baseMesh='character',
+        control='C_facial00_foreHead_ctr',
+        blendShapes=dict(ears={'connection': 'flip', 'value': 10}
+                         ),
+        attributes=dict(flip={'type': 'float', 'min': 0, 'max': 10},
+                        ),
+        order=['flip']
+    ),
+
     browCorrugator=dict(
         type='blend_shape_definition',
         isSymetrical=False,
         baseMesh='character',
         control='C_facial00_foreHead_ctr',
         blendShapes=dict(
+                         eyeCls={'connection': 'eyesClose', 'value': 10},
+                         eyeCls50={'connection': 'eyesClose', 'value': 5},
+                         eyeClsWCorrective={'connection': 'eyeWCorrective', 'value': 10},
                          browCorrugator={'connection': 'corrugator', 'value': 10},
                          ),
         attributes=dict(
+                        eyesClose={'type': 'float', 'min': 0, 'max': 10},
                         corrugator={'type': 'float', 'min': 0, 'max': 10},
+                        eyeWCorrective={'type': 'float', 'min': 0, 'max': 10}
         ),
-        order=['corrugator' ],
-    )
+        order=['corrugator', 'eyesClose', 'eyeWCorrective'],
+    ),
 )
 eyes_dict = dict(
     eyes=dict(
@@ -150,6 +186,8 @@ correctives_dict = dict(
 )
 
 direct_blendshape = {
+
+    'moustache': 'C_moustache'
 }
 # 'character': 'C_BODY_001_HIGH'
 
